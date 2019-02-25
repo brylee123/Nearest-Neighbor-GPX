@@ -24,6 +24,9 @@ def adjacent_parse(root, route, length, visited):
 	closest = ""
 	visited.add(root)
 
+	lat1,lon1 = root.split(",")
+	lat1,lon1 = float(lat1), float(lon1)
+
 	for neighbor in waypoints:
 
 		if len(route) == len(waypoints):
@@ -44,7 +47,7 @@ def adjacent_parse(root, route, length, visited):
 
 	# After we determined the closest node:
 	length += shortest
-	#print("total length is", length)
+	#print(len(visited), "total length is", length)
 	route.append(closest)
 
 	if len(route) != len(waypoints):
@@ -59,8 +62,8 @@ for i in range(len(waypoints)):
 	lat1,lon1 = waypoints[i].split(",")
 	lat1,lon1 = float(lat1), float(lon1)
 	
-	root = waypoints[i]
-	route, route_length = adjacent_parse(root, [root], 0, set())
+	start_point = waypoints[i]
+	route, route_length = adjacent_parse(start_point, [start_point], 0, set())
 	
 	routes.append(route)
 	route_lengths.append(route_length)
@@ -70,13 +73,8 @@ print(route_lengths)
 shortest_length = min(route_lengths)
 shortest_route = routes[route_lengths.index(shortest_length)] # Indicies are tied together
 
-#print(route_lengths.index(shortest_length))
 print("Shortest Route:\n", shortest_route)
 print("Shortest Length:\n", shortest_length)
-
-print("============================ DONE ============================")
-
-
 
 # GPX Output
 file = open("testfile.gpx","w")
