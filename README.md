@@ -5,10 +5,11 @@ Calculates the distance between two coordinates using the Haversine Formula and 
 
 It returns the shortest value, but it is not necessarily the most optimal path.
 
-Problems to fix:
+TO DO/TO FIX:
 - RUNTIME
 - The ability to choose a starting point
 - Maybe implement a more sophisticated algorithm that can do better than greedy
+- Separate GPX builder in seperate file.
 - More and more tests!
 - Develop a NP complete solution to the Traveling Salesman Problem (lol.)
 
